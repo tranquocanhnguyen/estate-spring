@@ -21,4 +21,15 @@ public class UserService implements IUserService {
         UserEntity entity  = userRepository.findOneByUserName(name);
         return userConverter.convertToDTO(entity);
     }
+
+    @Override
+    public UserDTO findById(Long id) {
+        return userConverter.convertToDTO(userRepository.findById(id));
+    }
+
+    @Override
+    public void save(UserDTO dto) {
+        UserEntity entity = userConverter.convertToEntity(dto);
+        userRepository.save(entity);
+    }
 }

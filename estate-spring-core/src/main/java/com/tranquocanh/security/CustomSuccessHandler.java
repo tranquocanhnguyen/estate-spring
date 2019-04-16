@@ -14,38 +14,42 @@ import java.util.List;
 
 @Component
 public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
+
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication)
             throws IOException {
         String targetUrl = determineTargetUrl();
-        if(response.isCommitted()) {
-            System.out.println("can't redirect");
+
+        if (response.isCommitted()) {
+            System.out.println("can't redirect url");
             return;
         }
-        redirectStrategy.sendRedirect(request,response,targetUrl);
+
+        redirectStrategy.sendRedirect(request, response, targetUrl);
     }
 
     private String determineTargetUrl() {
         String url = "";
         List<String> roles = SecurityUtils.getAuthorities();
-        if(isStaff(roles)) {
+        if (isStaff(roles)) {
             url = "/admin/home";
-        }
-        if (isManager(roles)) {
+        } else if (isManager(roles)) {
             url = "/admin/home";
         }
         return url;
     }
-    private boolean isStaff(List<String> roles) {
-        if(roles.contains("STAFF")) {
+
+    private boolean isManager(List<String> roles) {
+        if (roles.contains("MANAGER")) {
             return true;
         }
         return false;
     }
-    private boolean isManager(List<String> roles) {
-        if (roles.contains("MANAGER")) {
+
+    private boolean isStaff(List<String> roles) {
+        if (roles.contains("STAFF")) {
             return true;
         }
         return false;

@@ -1,72 +1,61 @@
-<%@include file="/common/taglib.jsp"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Star Admin Free Bootstrap Admin Dashboard Template</title>
-    <!-- plugins:css -->
-    <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--%>
-    <script
-            src="https://code.jquery.com/jquery-3.3.1.js"
-            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-            crossorigin="anonymous"></script>
-    <script src="<c:url value='/template/paging/jquery.twbsPagination.js'/>"></script>
-    <link rel="stylesheet" href="<c:url value='/template/vendors/iconfonts/mdi/css/materialdesignicons.min.css'/>">
-    <link rel="stylesheet" href="<c:url value='/template/vendors/css/vendor.bundle.base.css'/>">
-    <link rel="stylesheet" href="<c:url value='/template/vendors/css/vendor.bundle.addons.css'/>">
-    <!-- endinject -->
-    <!-- plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="<c:url value='/template/css/style.css'/>">
-    <!-- endinject -->
-    <link rel="shortcut icon" href="<c:url value='/template/images/favicon.png'/>" />
-    <link rel="stylesheet" href="<c:url value='/template/global/css/mycss.css'/>">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title><dec:title default="Trang chủ" /></title>
+	<link rel="stylesheet" href="<c:url value='/template/admin/assets/css/bootstrap.min.css' />" />
+    <link rel="stylesheet" href="<c:url value='/template/admin/font-awesome/4.5.0/css/font-awesome.min.css' />" />
+    <link rel="stylesheet" href="<c:url value='/template/admin/assets/css/ace.min.css' />" class="ace-main-stylesheet" id="main-ace-style" />
+    <script src="<c:url value='/template/admin/assets/js/ace-extra.min.js' />"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <%--<script type='text/javascript' src='<c:url value="/template/admin/js/jquery-2.2.3.min.js" />'></script>
+    <script src="<c:url value='/template/admin/assets/js/jquery.2.1.1.min.js' />"></script>--%>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="<c:url value='/template/admin/js/paging/jquery.twbsPagination.js' />"></script>
+	<script src="<c:url value='/template/admin/js/admin-global.js' />"></script>
 </head>
-<body>
-<div class="container-scroller">
-    <!-- partial:partials/_navbar.html -->
-    <%@include file="/common/header.jsp"%>
-    <!-- partial -->
-    <div class="container-fluid page-body-wrapper">
-        <!-- partial:partials/_sidebar.html -->
-        <%@include file="/common/menu.jsp"%>
-        <!-- partial -->
-        <div class="main-panel">
-            <dec:body />
-            <!-- content-wrapper ends -->
-            <!-- partial:partials/_footer.html -->
-            <%@include file="/common/footer.jsp"%>
-            <!-- partial -->
-        </div>
-        <!-- main-panel ends -->
-    </div>
-    <!-- page-body-wrapper ends -->
-</div>
-<!-- container-scroller -->
-
-
-<!-- container-scroller -->
-
-<!-- plugins:js -->
-<script src="<c:url value='/template/vendors/js/vendor.bundle.base.js'/>"></script>
-<script src="<c:url value='/template/vendors/js/vendor.bundle.addons.js'/>"></script>
-<!-- endinject -->
-<!-- Plugin js for this page-->
-<!-- End plugin js for this page-->
-<!-- inject:js -->
-<script src="<c:url value='/template/js/off-canvas.js'/>"></script>
-<script src="<c:url value='/template/js/misc.js'/>"></script>
-<!-- endinject -->
-<!-- Custom js for this page-->
-<script src="<c:url value='/template/js/dashboard.js'/>"></script>
-<!-- End custom js for this page-->
-<%--<script src="jquery.twbsPagination.js"></script>--%>
-<script src="<c:url value='/template/paging/jquery.twbsPagination.js'/>"></script>
-
+<body class="no-skin">
+	<!-- header -->
+    <%@ include file="/common/admin/header.jsp" %>
+    <!-- header -->
+	
+	<div class="main-container" id="main-container">
+		<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+		</script>
+		<!-- header -->
+    	<%@ include file="/common/admin/menu.jsp" %>
+    	<!-- header -->
+		
+		<dec:body/>
+		
+		<!-- footer -->
+    	<%@ include file="/common/admin/footer.jsp" %>
+    	<!-- footer -->
+    	
+    	<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse display">
+				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+		</a>
+	</div>
+	
+	
+	<script src="<c:url value='/template/admin/assets/js/bootstrap.min.js' />"></script>
+	<script src="<c:url value='/template/admin/assets/js/jquery-ui.custom.min.js' />"></script>
+	<script src="<c:url value='/template/admin/assets/js/jquery.ui.touch-punch.min.js' />"></script>
+	<script src="<c:url value='/template/admin/assets/js/jquery.easypiechart.min.js' />"></script>
+	<script src="<c:url value='/template/admin/assets/js/jquery.sparkline.min.js' />"></script>
+	<script src="<c:url value='/template/admin/assets/js/jquery.flot.min.js' />"></script>
+	<script src="<c:url value='/template/admin/assets/js/jquery.flot.pie.min.js' />"></script>
+	<script src="<c:url value='/template/admin/assets/js/jquery.flot.resize.min.js' />"></script>
+	<script src="<c:url value='/template/admin/assets/js/ace-elements.min.js' />"></script>
+	<script src="<c:url value='/template/admin/assets/js/ace.min.js' />"></script>
+	<script src="<c:url value='/template/admin/assets/js/bootstrap.min.js'/>"></script>
+	
+	<!-- page specific plugin scripts -->
+	<script src="<c:url value='/template/admin/assets/js/jquery-ui.min.js'/>"></script>
 </body>
 </html>

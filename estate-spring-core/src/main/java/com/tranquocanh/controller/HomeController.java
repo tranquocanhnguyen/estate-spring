@@ -1,5 +1,7 @@
 package com.tranquocanh.controller;
 
+import com.tranquocanh.dto.MyUserDetail;
+import com.tranquocanh.util.SecurityUtils;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -17,19 +19,23 @@ public class HomeController {
 
     @GetMapping("/admin/home")
     public ModelAndView homePage() {
-        ModelAndView model = new ModelAndView("home");
-        return model;
+        ModelAndView mav = new ModelAndView("home");
+        return mav;
     }
 
     @GetMapping("/login")
     public ModelAndView loginPage() {
-        ModelAndView model = new ModelAndView("login");
-        return model;
+        ModelAndView mav = new ModelAndView("login");
+        return mav;
     }
+
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request, HttpServletResponse response) {
+
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null) {
+            MyUserDetail userDetail = SecurityUtils.getPrincipal();
+            userDetail.setToken(null);
             new SecurityContextLogoutHandler().logout(request, response, auth);
         }
         return "redirect:/login";

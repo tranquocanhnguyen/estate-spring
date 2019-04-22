@@ -9,8 +9,8 @@
             
     <http auto-config="false" use-expressions="true" disable-url-rewriting="true">
 
-        <intercept-url pattern="/admin/user*" access="hasAnyRole('MANAGER')" />
         <intercept-url pattern="/admin/home" access="hasAnyRole('MANAGER,STAFF')" />
+        <intercept-url pattern="/admin/building/list" access="hasAnyRole('MANAGER,STAFF')" />
                 
 		<access-denied-handler error-page="/accessDenied" />
         <form-login  login-page="/login"
@@ -30,7 +30,7 @@
     </authentication-manager>
      
     <beans:bean id="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" /> 
-    <beans:bean id="customUserDetailsService" class="com.tranquocanh.service.impl.CustomUserDetailsService" />
+    <beans:bean id="customUserDetailsService" class="com.tranquocanh.service.CustomUserDetailsService" />
 	<beans:bean id="customSuccessHandler"     class="com.tranquocanh.security.CustomSuccessHandler" />
 
 </beans:beans>

@@ -3,5 +3,7 @@
     <persistence-unit name="persistence-data">
         <class>com.tranquocanh.entity.UserEntity</class>
         <class>com.tranquocanh.entity.RoleEntity</class>
+        <class>com.tranquocanh.entity.BuildingEntity</class>
     </persistence-unit>
 </persistence>
+
